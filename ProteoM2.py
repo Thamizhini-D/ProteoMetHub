@@ -16,9 +16,18 @@ st.subheader("Created for the Bradford Assay")
 uploaded_file = st.file_uploader("Upload your file", type=("csv", "xls", "xlsx"))
 
 if uploaded_file is not None:
-    filename = uploaded_file.name
-    st.write(filename)
+    file_name = uploaded_file.name
+    extension = file_name.split('.')[1]
+        
+    if (extension == 'csv'):
+            dataframe = pd.read_csv(uploaded_file)
 
+            
+    elif (extension == 'xlsx' or extension == 'xls'):
+            dataframe = pd.read_excel(uploaded_file)
+
+
+    st.write(dataframe)
 
 
 # In[ ]:
