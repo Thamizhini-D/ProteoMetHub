@@ -16,7 +16,7 @@ st.subheader("Created for the Bradford Assay")
 uploaded_file = st.file_uploader("Upload your file", type=("csv", "xls", "xlsx"))
 
 if uploaded_file is not None:
-    filename = uploaded_file.name
+    filename = uploaded_file.value
     extension = file_name.split('.')[1]
         
     if (extension == 'csv'):
