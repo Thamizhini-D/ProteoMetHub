@@ -8,7 +8,6 @@ import pandas as pd
 import numpy as np
 import streamlit as st
 from streamlit_jupyter import StreamlitPatcher, tqdm
-import openpyxl
 
 
 StreamlitPatcher().jupyter()  # register streamlit with jupyter-compatible wrappers
