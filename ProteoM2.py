@@ -23,7 +23,7 @@ if uploaded_file is not None:
                 dataframe = pd.read_csv(uploaded_file)
 
             
-        else (extension == 'xlsx' or extension == 'xls'):
+        elif (extension == 'xlsx' or extension == 'xls'):
                 dataframe = pd.read_excel(uploaded_file)
 
 
