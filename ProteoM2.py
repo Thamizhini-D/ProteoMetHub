@@ -14,9 +14,20 @@ st.title("ProteoMetrics")
 st.subheader("Created for the Bradford Assay")
 
 uploaded_file = st.file_uploader("Upload your file", type=("csv", "xls", "xlsx"))
-if uploaded_file is not None:
-    dataframe = pd.read_csv(uploaded_file)
-    st.write(dataframe)
+    
+    if uploaded_file is not None:
+    for filename in uploaded_file.name:
+        extension = file_name.split('.')[1]
+        
+        if (extension == 'csv'):
+                dataframe = pd.read_csv(uploaded_file)
+
+            
+        else (extension == 'xlsx' or extension == 'xls'):
+                dataframe = pd.read_excel(uploaded_file)
+
+
+        st.write(dataframe)
 
 # In[ ]:
 
