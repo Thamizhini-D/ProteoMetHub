@@ -13,8 +13,10 @@ StreamlitPatcher().jupyter()  # register streamlit with jupyter-compatible wrapp
 st.title("ProteoMetrics")
 st.subheader("Created for the Bradford Assay")
 
-st.file_uploader("Upload your file", type=("csv", "xls", "xlsx"))
-
+uploaded_file = st.file_uploader("Upload your file", type=("csv", "xls", "xlsx"))
+if uploaded_file is not None:
+    dataframe = pd.read_csv(uploaded_file)
+    st.write(dataframe)
 
 # In[ ]:
 
