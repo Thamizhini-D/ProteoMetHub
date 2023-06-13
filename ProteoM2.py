@@ -14,8 +14,8 @@ st.title("ProteoMetrics")
 st.subheader("Created for the Bradford Assay")
 
 uploaded_file = st.file_uploader("Upload your file", type=("csv", "xls", "xlsx"))
-    
-    if uploaded_file is not None:
+
+if uploaded_file is not None:
     for filename in uploaded_file.name:
         extension = file_name.split('.')[1]
         
@@ -28,6 +28,7 @@ uploaded_file = st.file_uploader("Upload your file", type=("csv", "xls", "xlsx")
 
 
         st.write(dataframe)
+
 
 # In[ ]:
 
