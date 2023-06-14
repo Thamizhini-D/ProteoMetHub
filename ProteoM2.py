@@ -48,7 +48,7 @@ def data_processing(data):
     data.loc[data.Standard_Unknown =='u','Protein_μg_aliquot'] = calconc(m, c, data['Average_absorbance_nm'])
             
     #drop unnecessary columns
-    data = data.drop(columns=['Absorbance_nm', 'Replicate_number'], axis=1, inplace=True)
+    data = data.drop(columns=['Absorbance_nm', 'Replicate_number'], axis=1)
     
 
     return st.write(data)
