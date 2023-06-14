@@ -58,7 +58,7 @@ def data_processing(data):
     data.loc[data.Standard_Unknown =='u', ['Volume_(μl)_for_100μg']] = calcvol (data['Protein_μg_aliquot'], data['Aliquot_volume_μl'], 100)
             
     #calculate the amount of protein in entire sample based on amounts in aliquot 
-    data.loc[content_2.Standard_Unknown =='u','Protein_μg_sample'] = calcsampleconc(data['Protein_μg_aliquot'], data['Aliquot_volume_μl'], data['Sample_volume_ml'])
+    data.loc[data.Standard_Unknown =='u','Protein_μg_sample'] = calcsampleconc(data['Protein_μg_aliquot'], data['Aliquot_volume_μl'], data['Sample_volume_ml'])
         
     return st.write(data)
 
