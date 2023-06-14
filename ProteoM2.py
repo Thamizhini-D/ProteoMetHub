@@ -107,7 +107,7 @@ if uploaded_file is not None:
     if st.button("Process data"):
         data_processing(dataframe)
 
-if st.button("Show graph")
+if st.button("Show graph"):
     Process_graph(gradient, intercept, absorbance, concentration) 
         
 # In[ ]:
