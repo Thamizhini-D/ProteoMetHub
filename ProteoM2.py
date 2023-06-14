@@ -9,6 +9,12 @@ import numpy as np
 import streamlit as st
 from streamlit_jupyter import StreamlitPatcher, tqdm
 
+def data_processing(data):
+    
+    #standardizing verbal input by "SMALLER CASING" all of them
+    data['Condition_name'] = data['Condition_name'].str.lower()
+    data['Standard_Unknown'] = data['Standard_Unknown'].str.lower()
+    return st.write("Processed!"), display(data)
 
 StreamlitPatcher().jupyter()  # register streamlit with jupyter-compatible wrappers
 st.title("ProteoMetrics")
@@ -30,8 +36,7 @@ if uploaded_file is not None:
 
     st.write(dataframe)
     if st.button("Process data"):
-        st.write("Processed!")
-
+        data_processing(dataframe)
 # In[ ]:
 
 
