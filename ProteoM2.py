@@ -30,6 +30,7 @@ def calcsampleconc (Protein_μg_aliquot, ALiquot_volume_μl, Sample_volume_ml):
 
 def data_processing(data):
     
+    global conc, abso, m, c, data
     #standardizing verbal input by "SMALLER CASING" all of them
     data['Condition_name'] = data['Condition_name'].str.lower()
     data['Standard_Unknown'] = data['Standard_Unknown'].str.lower()
@@ -63,7 +64,7 @@ def data_processing(data):
     #calculate the amount of protein in entire sample based on amounts in aliquot 
     data.loc[data.Standard_Unknown =='u','Protein_μg_sample'] = calcsampleconc(data['Protein_μg_aliquot'], data['Aliquot_volume_μl'], data['Sample_volume_ml'])
         
-    return st.write(data)
+    return st.write(data), st.button("Show graph")
 
 st.title("ProteoMetrics")
 st.subheader("Created for the Bradford Assay")
@@ -89,10 +90,26 @@ if uploaded_file is not None:
 # In[ ]:
 
 
+
 #create your figure and get the figure object returned
 fig = plt.figure() 
-plt.plot([1, 2, 3, 4, 5]) 
 
+plt.ylabel('Absorbance at 595nm')
+plt.xlabel('Amount of proteins (μg)')
+plt.title('Graph of the standard curve')
+            
+#plot the data points,   # plot the line of best fit
+plt.plot(conc, abso, 'o')
+plt.plot(conc, m*conc+c, 'g-')
+
+plt.legend(['Standards', 'Line of best fit'])
+plt.text(-1, .28, r"y = {}x + {}".format(round(m, 4), round(c, 4)), color="k", fontsize=10)
+            
+#res = stats.linregress(conc, abso)
+#plt.text(-1, .24, f"R-squared: {res.rvalue**2:.6f}", color="k", fontsize=10)
+
+fig_html = mpld3.fig_to_html(fig)
+components.html(fig_html, height=600)
 fig_html = mpld3.fig_to_html(fig)
 components.html(fig_html, height=600)
 
