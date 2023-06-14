@@ -14,7 +14,7 @@ def data_processing(data):
     #standardizing verbal input by "SMALLER CASING" all of them
     data['Condition_name'] = data['Condition_name'].str.lower()
     data['Standard_Unknown'] = data['Standard_Unknown'].str.lower()
-    return st.write("data")
+    return st.write(data)
 
 StreamlitPatcher().jupyter()  # register streamlit with jupyter-compatible wrappers
 st.title("ProteoMetrics")
