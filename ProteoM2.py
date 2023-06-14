@@ -10,24 +10,7 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import mpld3
 import streamlit.components.v1 as components
-    
-    
-def Process_graph(gradient, intercept, absorbance, concentration):
-        #layout of the graph
-        plt.ylabel('Absorbance at 595nm')
-        plt.xlabel('Amount of proteins (μg)')
-        plt.title('Graph of the standard curve')
 
-        #plot the data points,   # plot the line of best fit
-        plt.plot(conc, abso, 'o')
-        plt.plot(conc, m*conc+c, 'g-')
-
-        plt.legend(['Standards', 'Line of best fit'])
-        plt.text(-1, .28, r"y = {}x + {}".format(round(m, 4), round(c, 4)), color="k", fontsize=10)
-
-        #res = stats.linregress(conc, abso)
-        plt.text(-1, .24, f"R-squared: {res.rvalue**2:.6f}", color="k", fontsize=10)
-        return plt.show()
         
 # calculates the concentration using the absorbance_value, m & c values  
 def calconc (gradient, intercept, absorbance):
@@ -85,6 +68,23 @@ def data_processing(data):
     return st.write(data)
 
                 
+def Process_graph(gradient, intercept, absorbance, concentration):
+        #layout of the graph
+        plt.ylabel('Absorbance at 595nm')
+        plt.xlabel('Amount of proteins (μg)')
+        plt.title('Graph of the standard curve')
+
+        #plot the data points,   # plot the line of best fit
+        plt.plot(conc, abso, 'o')
+        plt.plot(conc, m*conc+c, 'g-')
+
+        plt.legend(['Standards', 'Line of best fit'])
+        plt.text(-1, .28, r"y = {}x + {}".format(round(m, 4), round(c, 4)), color="k", fontsize=10)
+
+        #res = stats.linregress(conc, abso)
+        plt.text(-1, .24, f"R-squared: {res.rvalue**2:.6f}", color="k", fontsize=10)
+        return plt.show()
+
 
 st.title("ProteoMetrics")
 st.subheader("Created for the Bradford Assay")
