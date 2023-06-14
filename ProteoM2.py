@@ -7,7 +7,6 @@
 import pandas as pd
 import numpy as np
 import streamlit as st
-from streamlit_jupyter import StreamlitPatcher, tqdm
 
 def data_processing(data):
     
@@ -16,7 +15,6 @@ def data_processing(data):
     data['Standard_Unknown'] = data['Standard_Unknown'].str.lower()
     return st.write(data)
 
-StreamlitPatcher().jupyter()  # register streamlit with jupyter-compatible wrappers
 st.title("ProteoMetrics")
 st.subheader("Created for the Bradford Assay")
 
