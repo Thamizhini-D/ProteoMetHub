@@ -7,6 +7,8 @@
 import pandas as pd
 import numpy as np
 import streamlit as st
+import matplotlib.pyplot as plt
+
 
 # calculates the concentration using the absorbance_value, m & c values  
 def calconc (gradient, intercept, absorbance):
