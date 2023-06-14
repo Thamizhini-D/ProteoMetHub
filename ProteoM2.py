@@ -13,6 +13,18 @@ def calconc (gradient, intercept, absorbance):
     concentration = (absorbance - intercept) / gradient
     return round(concentration, 3)
 
+# calculates required volume to get the the desired amount of proteins from a sample under a particular condition
+def calcvol (Protein_μg_aliquot, Aliquot_volume_μl, desired_protein_μg):
+    required_volume = (desired_protein_μg*Aliquot_volume_μl)/Protein_μg_aliquot    
+    return round(required_volume, 3)
+
+# calculates the amount of proteins in the entire sample using aliquot amounts
+def calcsampleconc (Protein_μg_aliquot, ALiquot_volume_μl, Sample_volume_ml):
+    Sample_volume_μl = Sample_volume_ml*1000
+    Protein_μg_sample = (Sample_volume_μl*Protein_μg_aliquot)/ALiquot_volume_μl
+    return Protein_μg_sample
+
+
 def data_processing(data):
     
     #standardizing verbal input by "SMALLER CASING" all of them
@@ -37,6 +49,16 @@ def data_processing(data):
             
     #drop unnecessary columns
     data = data.drop(['Absorbance_nm', 'Replicate_number'], 1)
+    
+    #drop repetetive rows
+    data.drop_duplicates(['Condition_number', 'Condition_name'], keep='first', inplace=True)
+    data.reset_index(drop=True, inplace=True)
+            
+    #calculate volume to get desired amount of proteins. Default set to 100μg
+    data.loc[data.Standard_Unknown =='u', ['Volume_(μl)_for_100μg']] = calcvol (data['Protein_μg_aliquot'], data['Aliquot_volume_μl'], 100)
+            
+    #calculate the amount of protein in entire sample based on amounts in aliquot 
+    data.loc[content_2.Standard_Unknown =='u','Protein_μg_sample'] = calcsampleconc(data['Protein_μg_aliquot'], data['Aliquot_volume_μl'], data['Sample_volume_ml'])
     
     return st.write(data)
 
