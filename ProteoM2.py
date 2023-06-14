@@ -85,8 +85,7 @@ def data_processing(data):
     
     return st.write(data), st.write(Process_btn)
 
-if Process_btn:
-    Process_graph(gradient, intercept, absorbance, concentration)                 
+                
 
 st.title("ProteoMetrics")
 st.subheader("Created for the Bradford Assay")
@@ -108,6 +107,9 @@ if uploaded_file is not None:
     st.write(dataframe)
     if st.button("Process data"):
         data_processing(dataframe)
+
+if Process_btn:
+    Process_graph(gradient, intercept, absorbance, concentration) 
         
 # In[ ]:
 
