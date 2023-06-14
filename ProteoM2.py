@@ -12,7 +12,7 @@ import mpld3
 import streamlit.components.v1 as components
     
     
-def Process_graph(m, c, abso, conc):
+def Process_graph(gradient, intercept, absorbance, concentration):
         #layout of the graph
         plt.ylabel('Absorbance at 595nm')
         plt.xlabel('Amount of proteins (μg)')
@@ -108,7 +108,7 @@ if uploaded_file is not None:
         data_processing(dataframe)
 
     if st.button("Show graph"):
-        Process_graph(gradient, intercept, absorbance, concentration) 
+        Process_graph(m, c, abso, conc)
         
 # In[ ]:
 
