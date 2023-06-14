@@ -8,6 +8,11 @@ import pandas as pd
 import numpy as np
 import streamlit as st
 
+# calculates the concentration using the absorbance_value, m & c values  
+def calconc (gradient, intercept, absorbance):
+    concentration = (absorbance - intercept) / gradient
+    return round(concentration, 3)
+
 def data_processing(data):
     
     #standardizing verbal input by "SMALLER CASING" all of them
@@ -26,6 +31,13 @@ def data_processing(data):
 
     #merge the new column with the main index
     data = data.merge(data_mean)
+    
+    #calculate the amount of proteins using the absorbance values
+    data.loc[data.Standard_Unknown =='u','Protein_μg_aliquot'] = calconc(m, c, data['Average_absorbance_nm'])
+            
+    #drop unnecessary columns
+    data = data.drop(['Absorbance_nm', 'Replicate_number'], 1)
+    
     return st.write(data)
 
 st.title("ProteoMetrics")
