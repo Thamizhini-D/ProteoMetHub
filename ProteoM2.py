@@ -12,9 +12,6 @@ import mpld3
 import streamlit.components.v1 as components
     
 Process_btn = st.button("Show graph")
-if Process_btn:
-    Process_graph(gradient, intercept, absorbance, concentration)
-
     
 def Process_graph(m, c, abso, conc):
         #layout of the graph
@@ -87,7 +84,9 @@ def data_processing(data):
     data.loc[data.Standard_Unknown =='u','Protein_μg_sample'] = calcsampleconc(data['Protein_μg_aliquot'], data['Aliquot_volume_μl'], data['Sample_volume_ml'])
     
     return st.write(data), st.write(Process_btn)
-                 
+
+if Process_btn:
+    Process_graph(gradient, intercept, absorbance, concentration)                 
 
 st.title("ProteoMetrics")
 st.subheader("Created for the Bradford Assay")
