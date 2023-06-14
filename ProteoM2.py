@@ -29,7 +29,10 @@ if uploaded_file is not None:
 
 
     st.write(dataframe)
+    
 
+if st.button("Process data"):
+    st.write("Processed!")
 
 # In[ ]:
 
