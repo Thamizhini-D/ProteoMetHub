@@ -11,7 +11,6 @@ import matplotlib.pyplot as plt
 import mpld3
 import streamlit.components.v1 as components
     
-Process_btn = st.button("Show graph")
     
 def Process_graph(m, c, abso, conc):
         #layout of the graph
@@ -83,7 +82,7 @@ def data_processing(data):
     #calculate the amount of protein in entire sample based on amounts in aliquot 
     data.loc[data.Standard_Unknown =='u','Protein_μg_sample'] = calcsampleconc(data['Protein_μg_aliquot'], data['Aliquot_volume_μl'], data['Sample_volume_ml'])
     
-    return st.write(data), st.write(Process_btn)
+    return st.write(data)
 
                 
 
@@ -108,7 +107,7 @@ if uploaded_file is not None:
     if st.button("Process data"):
         data_processing(dataframe)
 
-if Process_btn:
+if st.button("Show graph")
     Process_graph(gradient, intercept, absorbance, concentration) 
         
 # In[ ]:
