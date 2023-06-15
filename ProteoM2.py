@@ -94,7 +94,7 @@ if uploaded_file is not None:
           plt.plot([1, 2, 3, 4, 5])
           fig = plt.figure(figsize=(4, 4))         
 
-          st.pyplot(fig)
+          st.plt(fig)
 
     
         
