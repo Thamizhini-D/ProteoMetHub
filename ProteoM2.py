@@ -26,7 +26,7 @@ def calcsampleconc (Protein_μg_aliquot, ALiquot_volume_μl, Sample_volume_ml):
     Protein_μg_sample = (Sample_volume_μl*Protein_μg_aliquot)/ALiquot_volume_μl
     return Protein_μg_sample
 
-def draw_graph(conc, abso):
+def draw_graph():
         
            fig, ax = plt.subplots(figsize=(12,8))
            plt.ylabel('Absorbance at 595nm')
@@ -106,7 +106,7 @@ if uploaded_file is not None:
     if st.button("Process data"):
         st.write(data_processing(dataframe))
     if st.button("Show graph"):
-        st.write(draw_graph(data[data.Standard_Unknown =='s']['Protein_μg_sample'], data[data.Standard_Unknown =='s']['Absorbance_nm']))
+        st.write(draw_graph())
     
         
 
