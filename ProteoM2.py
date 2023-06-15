@@ -26,7 +26,17 @@ def calcsampleconc (Protein_μg_aliquot, ALiquot_volume_μl, Sample_volume_ml):
     Protein_μg_sample = (Sample_volume_μl*Protein_μg_aliquot)/ALiquot_volume_μl
     return Protein_μg_sample
 
-
+def draw_graph(conc, abso):
+        
+           fig, ax = plt.subplots(figsize=(12,8))
+           plt.ylabel('Absorbance at 595nm')
+           plt.xlabel('Amount of proteins (μg)')
+           plt.title('Graph of the standard curve')
+        
+           #plot the data points,   # plot the line of best fit
+           
+           st.pyplot(fig)
+        
 def data_processing(data):
 
     global conc, abso, m, c
@@ -37,10 +47,16 @@ def data_processing(data):
     #reading data from the columns
     conc = data[data.Standard_Unknown =='s']['Protein_μg_sample']
     abso = data[data.Standard_Unknown =='s']['Absorbance_nm']
-    
+
     #line of best fit using polyfit function
     m, c = np.polyfit(conc, abso, 1)
-    
+
+    #plot the data points,   
+    plt.plot(conc, abso, 'o')
+    # plot the line of best fit
+    plt.plot(conc, m*conc+c, 'g-')
+
+
     #group by Condition num/name, avg the abso values, name the new columns, round the avg values
     data_mean = data.groupby(['Condition_number'])['Absorbance_nm'].mean().round(3).rename('Average_absorbance_nm').reset_index()
 
@@ -65,18 +81,7 @@ def data_processing(data):
     
     return data
 
-def draw_graph(conc, abso):
-           fig, ax = plt.subplots(figsize=(12,8))
-           plt.ylabel('Absorbance at 595nm')
-           plt.xlabel('Amount of proteins (μg)')
-           plt.title('Graph of the standard curve')
 
-            #plot the data points,   # plot the line of best fit
-           plt.plot(conc, abso, 'o')
-           #plt.plot(conc, m*conc+c, 'g-')
-           #plot the data points,   # plot the line of best fit
-           
-           st.pyplot(fig)
 
 
 
