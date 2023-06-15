@@ -67,11 +67,6 @@ def data_processing(data):
     
     return data
 
-def graph_spec():
-
-    fig = plt.figure(figsize=(4, 4))         
-    plt.plot([1, 2, 3, 4, 5])
-    return st.pyplot(fig)
 
 
 
@@ -96,7 +91,11 @@ if uploaded_file is not None:
     if st.button("Process data"):
         st.write(data_processing(dataframe))
         if st.button("Show graph"):
-           st.write(graph_spec())
+          fig = plt.figure(figsize=(4, 4))         
+          plt.plot([1, 2, 3, 4, 5])
+          st.pyplot(fig)
+
+    
         
 
         
