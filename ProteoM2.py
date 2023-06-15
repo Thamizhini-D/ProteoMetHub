@@ -65,7 +65,7 @@ def data_processing(data):
     
     return data
 
-def draw_graph():
+def draw_graph(conc, abso, m, c):
            fig, ax = plt.subplots(figsize=(12,8))
            plt.ylabel('Absorbance at 595nm')
            plt.xlabel('Amount of proteins (μg)')
@@ -101,7 +101,7 @@ if uploaded_file is not None:
     if st.button("Process data"):
         st.write(data_processing(dataframe))
     if st.button("Show graph"):
-        st.write(draw_graph())
+        st.write(draw_graph(conc, abso, m, c))
     
         
 
