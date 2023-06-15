@@ -2,6 +2,7 @@
 # coding: utf-8
 
 # In[25]:
+padding_top = 0
 
 
 import pandas as pd
