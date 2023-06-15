@@ -68,13 +68,20 @@ def data_processing(data):
     return data
 
 def draw_graph():
-           arr = np.random.normal(1, 1, size=100)
-           fig, ax = plt.subplots()
-           ax.scatter(arr, arr)
-           ax.ylabel('Absorbance at 595nm')
-           ax.xlabel('Amount of proteins (μg)')
-           ax.title('Graph of the standard curve')
-           return st.plotly_chart(fig)
+           fig, ax = plt.subplots(figsize=(12,8))
+           plt.ylabel('Absorbance at 595nm')
+           plt.xlabel('Amount of proteins (μg)')
+           plt.title('Graph of the standard curve')
+           conc = [8, 9, 7, 7]
+           abso = [9, 7, 8, 6]
+           m = 4
+           c = 3
+            #plot the data points,   # plot the line of best fit
+           plt.plot(conc, abso, 'o')
+           #plt.plot(conc, m*conc+c, 'g-')
+           #plot the data points,   # plot the line of best fit
+           
+           st.pyplot(fig)
 
 
 
