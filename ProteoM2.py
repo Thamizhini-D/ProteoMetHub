@@ -43,21 +43,21 @@ def graph_spec():
     #line of best fit using polyfit function
     m, c = np.polyfit(conc, abso, 1)
 
-        #layout of the graph
-        plt.ylabel('Absorbance at 595nm')
-        plt.xlabel('Amount of proteins (μg)')
-        plt.title('Graph of the standard curve')
+    #layout of the graph
+    plt.ylabel('Absorbance at 595nm')
+    plt.xlabel('Amount of proteins (μg)')
+    plt.title('Graph of the standard curve')
 
-        #plot the data points,   # plot the line of best fit
-        plt.plot(conc, abso, 'o')
-        plt.plot(conc, m*conc+c, 'g-')
+    #plot the data points,   # plot the line of best fit
+    plt.plot(conc, abso, 'o')
+    plt.plot(conc, m*conc+c, 'g-')
 
-        plt.legend(['Standards', 'Line of best fit'])
-        plt.text(-1, .28, r"y = {}x + {}".format(round(m, 4), round(c, 4)), color="k", fontsize=10)
+    plt.legend(['Standards', 'Line of best fit'])
+    plt.text(-1, .28, r"y = {}x + {}".format(round(m, 4), round(c, 4)), color="k", fontsize=10)
 
-        #res = stats.linregress(conc, abso)
-        plt.text(-1, .24, f"R-squared: {res.rvalue**2:.6f}", color="k", fontsize=10)
-        plt.show()
+    #res = stats.linregress(conc, abso)
+    plt.text(-1, .24, f"R-squared: {res.rvalue**2:.6f}", color="k", fontsize=10)
+    plt.show()
     return m, c, conc, abso
     
     #group by Condition num/name, avg the abso values, name the new columns, round the avg values
