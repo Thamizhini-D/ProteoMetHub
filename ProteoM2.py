@@ -70,13 +70,8 @@ def data_processing(data):
 def graph_spec():
 
     fig = plt.figure(figsize=(4, 4))         
-    #layout of the graph
-    plt.ylabel('Absorbance at 595nm')
-    plt.xlabel('Amount of proteins (μg)')
-    plt.title('Graph of the standard curve')
-
-    
-    return st.pyplot(fig, True)
+    plt.plot([1, 2, 3, 4, 5])
+    return st.pyplot(fig)
 
 
 
