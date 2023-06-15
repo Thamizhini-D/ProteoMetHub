@@ -109,7 +109,7 @@ if uploaded_file is not None:
     if st.button("Process data"):
         st.write(data_processing(dataframe))
         if st.button("Show graph"):
-        st.write(graph_spec())
+           st.write(graph_spec())
         
 
         
