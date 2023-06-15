@@ -90,10 +90,10 @@ if uploaded_file is not None:
     st.write(dataframe)
     if st.button("Process data"):
         st.write(data_processing(dataframe))
-        if st.button("Show graph"):
-          fig = plt.figure(figsize=(4, 4))         
-          plt.plot([1, 2, 3, 4, 5])
-          st.pyplot(fig)
+                if st.button("Show graph"):
+                  fig = plt.figure(figsize=(4, 4))         
+                  plt.plot([1, 2, 3, 4, 5])
+                  st.pyplot(fig)
 
     
         
