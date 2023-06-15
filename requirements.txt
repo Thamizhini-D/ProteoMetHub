@@ -1,4 +1,4 @@
-streamlit-jupyter
+streamlit
 openpyxl
 matplotlib 
 mpld3
