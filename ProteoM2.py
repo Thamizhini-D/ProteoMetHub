@@ -93,7 +93,7 @@ if uploaded_file is not None:
         if st.button("Show graph"):
           fig = plt.figure(figsize=(4, 4))         
           plt.plot([1, 2, 3, 4, 5])
-          st.write(pyplot(fig))
+          st.pyplot()
 
     
         
