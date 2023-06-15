@@ -68,6 +68,8 @@ def data_processing(data):
     return data
 
 def graph_spec():
+
+    fig = plt.figure()         
     #layout of the graph
     plt.ylabel('Absorbance at 595nm')
     plt.xlabel('Amount of proteins (μg)')
@@ -82,7 +84,8 @@ def graph_spec():
 
     #res = stats.linregress(conc, abso)
     plt.text(-1, .24, f"R-squared: {res.rvalue**2:.6f}", color="k", fontsize=10)
-    return plt.show()
+    return st.pyplot(fig)
+
 
 
 st.title("ProteoMetrics")
