@@ -69,7 +69,7 @@ def data_processing(data):
 
 def graph_spec():
 
-    fig = plt.figure()         
+    fig = plt.figure(figsize=(4, 4))         
     #layout of the graph
     plt.ylabel('Absorbance at 595nm')
     plt.xlabel('Amount of proteins (μg)')
