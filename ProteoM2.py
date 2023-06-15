@@ -91,10 +91,13 @@ if uploaded_file is not None:
     if st.button("Process data"):
         st.write(data_processing(dataframe))
         if st.button("Show graph"):
-          plt.plot([1, 2, 3, 4, 5])
-          fig = plt.figure(figsize=(4, 4))         
-
-          st.plt(fig)
+           arr = np.random.normal(1, 1, size=100)
+           fig, ax = plt.subplots()
+           ax.scatter(arr, arr)
+           plt.ylabel('Absorbance at 595nm')
+           plt.xlabel('Amount of proteins (μg)')
+           plt.title('Graph of the standard curve')
+           st.pyplot(fig)
 
     
         
