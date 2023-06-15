@@ -2,15 +2,14 @@
 # coding: utf-8
 
 # In[25]:
-padding_top = 0
-
-
 import pandas as pd
 import numpy as np
 import streamlit as st
 import matplotlib.pyplot as plt
 import mpld3
 import streamlit.components.v1 as components
+
+st.set_page_config(layout="wide")
 
         
 # calculates the concentration using the absorbance_value, m & c values  
