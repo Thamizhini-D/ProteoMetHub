@@ -75,15 +75,7 @@ def graph_spec():
     plt.xlabel('Amount of proteins (μg)')
     plt.title('Graph of the standard curve')
 
-    #plot the data points,   # plot the line of best fit
-    plt.plot(conc, abso, 'o')
-    plt.plot(conc, m*conc+c, 'g-')
-
-    plt.legend(['Standards', 'Line of best fit'])
-    plt.text(-1, .28, r"y = {}x + {}".format(round(m, 4), round(c, 4)), color="k", fontsize=10)
-
-    #res = stats.linregress(conc, abso)
-    plt.text(-1, .24, f"R-squared: {res.rvalue**2:.6f}", color="k", fontsize=10)
+    
     return st.pyplot(fig)
 
 
