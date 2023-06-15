@@ -67,6 +67,14 @@ def data_processing(data):
     
     return data
 
+def draw_graph():
+           arr = np.random.normal(1, 1, size=100)
+           fig, ax = plt.subplots()
+           ax.scatter(arr, arr)
+           ax.ylabel('Absorbance at 595nm')
+           ax.xlabel('Amount of proteins (μg)')
+           ax.title('Graph of the standard curve')
+           return st.pyplot(fig)
 
 
 
@@ -91,14 +99,7 @@ if uploaded_file is not None:
     if st.button("Process data"):
         st.write(data_processing(dataframe))
         if st.button("Show graph"):
-           arr = np.random.normal(1, 1, size=100)
-           fig, ax = plt.subplots()
-           ax.scatter(arr, arr)
-           ax.ylabel('Absorbance at 595nm')
-           ax.xlabel('Amount of proteins (μg)')
-           ax.title('Graph of the standard curve')
-           st.pyplot(fig)
-
+           draw_graph()
     
         
 
