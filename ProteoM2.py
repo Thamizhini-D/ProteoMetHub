@@ -98,8 +98,8 @@ if uploaded_file is not None:
     st.write(dataframe)
     if st.button("Process data"):
         st.write(data_processing(dataframe))
-        if st.button("Show graph"):
-           draw_graph()
+    if st.button("Show graph"):
+        st.write(draw_graph())
     
         
 
