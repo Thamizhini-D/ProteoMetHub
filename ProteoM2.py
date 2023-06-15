@@ -94,9 +94,9 @@ if uploaded_file is not None:
            arr = np.random.normal(1, 1, size=100)
            fig, ax = plt.subplots()
            ax.scatter(arr, arr)
-           plt.ylabel('Absorbance at 595nm')
-           plt.xlabel('Amount of proteins (μg)')
-           plt.title('Graph of the standard curve')
+           ax.ylabel('Absorbance at 595nm')
+           ax.xlabel('Amount of proteins (μg)')
+           ax.title('Graph of the standard curve')
            st.pyplot(fig)
 
     
