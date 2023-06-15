@@ -70,10 +70,7 @@ def draw_graph():
            plt.ylabel('Absorbance at 595nm')
            plt.xlabel('Amount of proteins (μg)')
            plt.title('Graph of the standard curve')
-           conc = [8, 9, 7, 7]
-           abso = [9, 7, 8, 6]
-           m = 4
-           c = 3
+
             #plot the data points,   # plot the line of best fit
            plt.plot(conc, abso, 'o')
            #plt.plot(conc, m*conc+c, 'g-')
