@@ -74,7 +74,7 @@ def draw_graph():
            ax.ylabel('Absorbance at 595nm')
            ax.xlabel('Amount of proteins (μg)')
            ax.title('Graph of the standard curve')
-           return st.pyplot(fig)
+           return st.plotly_chart(fig)
 
 
 
