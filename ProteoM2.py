@@ -76,7 +76,7 @@ def graph_spec():
     plt.title('Graph of the standard curve')
 
     
-    return st.pyplot(fig)
+    return st.pyplot(fig, False)
 
 
 
