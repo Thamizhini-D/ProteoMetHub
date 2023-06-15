@@ -109,7 +109,7 @@ if uploaded_file is not None:
         data_processing(dataframe)
 
         if st.button("Show graph"):
-            Process_graph(m, c, abso, conc)
+            graph_spec()
         
 # In[ ]:
 
