@@ -72,7 +72,7 @@ def draw_graph(conc_x, abso_y, grad_m, inter_c):
 
            st.header("Linear Regression Model")
 
-           fig, ax = plt.subplots(figsize=(12,16))
+           fig, ax = plt.subplots(figsize=(12,8))
 
            # plot the line of best fit
            plt.plot(conc_x, abso_y, 'o')
@@ -83,8 +83,7 @@ def draw_graph(conc_x, abso_y, grad_m, inter_c):
            plt.xlabel('Amount of proteins (μg)')
            plt.title('Graph of the standard curve')
 
-           fig_html = mpld3.fig_to_html(fig)
-           return components.html(fig_html, height = 300)
+           return st.pyplot(fig)
 
 
 st.title("ProteoMetrics")
