@@ -41,9 +41,9 @@ def data_processing(data):
     m, c = np.polyfit(conc, abso, 1)
 
     #plot the data points,   
-    this.plot_data = plt.plot(conc, abso, 'o')
+    data_processing.plot_data = plt.plot(conc, abso, 'o')
     # plot the line of best fit
-    this.plot_line = plt.plot(conc, m*conc+c, 'g-')
+    data_processing.plot_line = plt.plot(conc, m*conc+c, 'g-')
 
     #group by Condition num/name, avg the abso values, name the new columns, round the avg values
     data_mean = data.groupby(['Condition_number'])['Absorbance_nm'].mean().round(3).rename('Average_absorbance_nm').reset_index()
