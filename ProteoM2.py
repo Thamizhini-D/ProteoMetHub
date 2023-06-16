@@ -40,11 +40,6 @@ def data_processing(data):
     #line of best fit using polyfit function
     m, c = np.polyfit(conc, abso, 1)
 
-    #plot the data points,   
-    plot_data = plt.plot(conc, abso, 'o')
-    # plot the line of best fit
-    plot_line = plt.plot(conc, m*conc+c, 'g-')
-
     #group by Condition num/name, avg the abso values, name the new columns, round the avg values
     data_mean = data.groupby(['Condition_number'])['Absorbance_nm'].mean().round(3).rename('Average_absorbance_nm').reset_index()
 
@@ -67,17 +62,21 @@ def data_processing(data):
     #calculate the amount of protein in entire sample based on amounts in aliquot 
     data.loc[data.Standard_Unknown =='u','Protein_μg_sample'] = calcsampleconc(data['Protein_μg_aliquot'], data['Aliquot_volume_μl'], data['Sample_volume_ml'])
     
-    return data, draw_graph(plot_data)
+    return st.write(data), draw_graph(conc, abso, m, c)
 
-def draw_graph(data_point):
-        
+def draw_graph(conc_x, abso_y, grad_m, inter_c):
+
+           # plot the line of best fit
+           plot_data = plt.plot(conc_x, abso_y, 'o')
+           # plot the line of best fit
+           plot_line = plt.plot(conc, m*conc+c, 'g-')
+
            fig, ax = plt.subplots(figsize=(12,8))
            plt.ylabel('Absorbance at 595nm')
            plt.xlabel('Amount of proteins (μg)')
            plt.title('Graph of the standard curve')
-           data_point
-           #data_line
-           st.pyplot(fig)
+          
+           return st.pyplot(fig)
 
 
 
