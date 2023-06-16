@@ -62,7 +62,7 @@ def data_processing(data):
     #calculate the amount of protein in entire sample based on amounts in aliquot 
     data.loc[data.Standard_Unknown =='u','Protein_μg_sample'] = calcsampleconc(data['Protein_μg_aliquot'], data['Aliquot_volume_μl'], data['Sample_volume_ml'])
     
-    return st.write(data), draw_graph(conc, abso, m, c)
+    return st.write(data), if st.button("Show graph"): draw_graph(conc, abso, m, c)
 
 def draw_graph(conc_x, abso_y, grad_m, inter_c):
 
@@ -100,7 +100,7 @@ if uploaded_file is not None:
 
     st.write(dataframe)
     if st.button("Process data"):
-        st.write(data_processing(dataframe))
+        data_processing(dataframe)
     
     
         
