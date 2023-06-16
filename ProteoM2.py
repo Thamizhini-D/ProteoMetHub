@@ -26,17 +26,6 @@ def calcsampleconc (Protein_μg_aliquot, ALiquot_volume_μl, Sample_volume_ml):
     Protein_μg_sample = (Sample_volume_μl*Protein_μg_aliquot)/ALiquot_volume_μl
     return Protein_μg_sample
 
-def draw_graph():
-        
-           fig, ax = plt.subplots(figsize=(12,8))
-           plt.ylabel('Absorbance at 595nm')
-           plt.xlabel('Amount of proteins (μg)')
-           plt.title('Graph of the standard curve')
-           #plot the data points
-           plot_data
-           #plot the line of best fit
-           plot_line           
-           st.pyplot(fig)
         
 def data_processing(data):
 
@@ -81,7 +70,17 @@ def data_processing(data):
     
     return data
 
-
+def draw_graph():
+        
+           fig, ax = plt.subplots(figsize=(12,8))
+           plt.ylabel('Absorbance at 595nm')
+           plt.xlabel('Amount of proteins (μg)')
+           plt.title('Graph of the standard curve')
+           #plot the data points
+           plot_data
+           #plot the line of best fit
+           plot_line           
+           st.pyplot(fig)
 
 
 
