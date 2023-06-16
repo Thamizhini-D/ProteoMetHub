@@ -29,6 +29,8 @@ def calcsampleconc (Protein_μg_aliquot, ALiquot_volume_μl, Sample_volume_ml):
         
 def data_processing(data):
 
+    st.header("Processed Data")
+    
     #standardizing verbal input by "SMALLER CASING" all of them
     data['Condition_name'] = data['Condition_name'].str.lower()
     data['Standard_Unknown'] = data['Standard_Unknown'].str.lower()
@@ -62,9 +64,11 @@ def data_processing(data):
     #calculate the amount of protein in entire sample based on amounts in aliquot 
     data.loc[data.Standard_Unknown =='u','Protein_μg_sample'] = calcsampleconc(data['Protein_μg_aliquot'], data['Aliquot_volume_μl'], data['Sample_volume_ml'])
     
-    return st.write(data), if st.button("Show graph"): draw_graph(conc, abso, m, c)
+    return st.write(data), draw_graph(conc, abso, m, c)
 
 def draw_graph(conc_x, abso_y, grad_m, inter_c):
+
+           st.header("Linear Regression Model")
 
            fig, ax = plt.subplots(figsize=(12,8))
 
@@ -76,9 +80,9 @@ def draw_graph(conc_x, abso_y, grad_m, inter_c):
            plt.ylabel('Absorbance at 595nm')
            plt.xlabel('Amount of proteins (μg)')
            plt.title('Graph of the standard curve')
-          
-           return st.pyplot(fig)
 
+           fig_html = mpld3.fig_to_html(fig)
+           return components.html(fig_html, height=600)
 
 
 st.title("ProteoMetrics")
@@ -97,7 +101,7 @@ if uploaded_file is not None:
     elif (extension == 'xlsx' or extension == 'xls'):
             dataframe = pd.read_excel(uploaded_file)
 
-
+    st.header("Your Experimental Data")
     st.write(dataframe)
     if st.button("Process data"):
         data_processing(dataframe)
