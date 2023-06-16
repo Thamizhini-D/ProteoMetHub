@@ -67,16 +67,16 @@ def data_processing(data):
     #calculate the amount of protein in entire sample based on amounts in aliquot 
     data.loc[data.Standard_Unknown =='u','Protein_μg_sample'] = calcsampleconc(data['Protein_μg_aliquot'], data['Aliquot_volume_μl'], data['Sample_volume_ml'])
     
-    return data, draw_graph(plot_data, plot_line)
+    return data, draw_graph(plot_data)
 
-def draw_graph(data_point, data_line):
+def draw_graph(data_poin):
         
            fig, ax = plt.subplots(figsize=(12,8))
            plt.ylabel('Absorbance at 595nm')
            plt.xlabel('Amount of proteins (μg)')
            plt.title('Graph of the standard curve')
            data_point
-           data_line
+           #data_line
            data_processing.plot_line
            st.pyplot(fig)
 
