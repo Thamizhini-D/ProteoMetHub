@@ -28,6 +28,7 @@ def calcsampleconc (Protein_μg_aliquot, ALiquot_volume_μl, Sample_volume_ml):
 
         
 def data_processing(data):
+    st.divider()
 
     st.header("Processed Data")
     
@@ -67,6 +68,7 @@ def data_processing(data):
     return st.write(data), draw_graph(conc, abso, m, c)
 
 def draw_graph(conc_x, abso_y, grad_m, inter_c):
+           st.divider()
 
            st.header("Linear Regression Model")
 
