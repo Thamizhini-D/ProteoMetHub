@@ -69,7 +69,7 @@ def draw_graph(conc_x, abso_y, grad_m, inter_c):
            # plot the line of best fit
            plot_data = plt.plot(conc_x, abso_y, 'o')
            # plot the line of best fit
-           plot_line = plt.plot(conc, m*conc+c, 'g-')
+           plot_line = plt.plot(conc_x, m*conc_x+c, 'g-')
 
            fig, ax = plt.subplots(figsize=(12,8))
            plt.ylabel('Absorbance at 595nm')
