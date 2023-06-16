@@ -72,7 +72,7 @@ def draw_graph(conc_x, abso_y, grad_m, inter_c):
 
            st.header("Linear Regression Model")
 
-           fig, ax = plt.subplots(figsize=(12,24))
+           fig, ax = plt.subplots(figsize=(12,16))
 
            # plot the line of best fit
            plt.plot(conc_x, abso_y, 'o')
