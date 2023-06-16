@@ -41,9 +41,9 @@ def data_processing(data):
     m, c = np.polyfit(conc, abso, 1)
 
     #plot the data points,   
-    data_processing.plot_data = plt.plot(conc, abso, 'o')
+    plot_data = plt.plot(conc, abso, 'o')
     # plot the line of best fit
-    data_processing.plot_line = plt.plot(conc, m*conc+c, 'g-')
+    plot_line = plt.plot(conc, m*conc+c, 'g-')
 
     #group by Condition num/name, avg the abso values, name the new columns, round the avg values
     data_mean = data.groupby(['Condition_number'])['Absorbance_nm'].mean().round(3).rename('Average_absorbance_nm').reset_index()
@@ -67,15 +67,16 @@ def data_processing(data):
     #calculate the amount of protein in entire sample based on amounts in aliquot 
     data.loc[data.Standard_Unknown =='u','Protein_μg_sample'] = calcsampleconc(data['Protein_μg_aliquot'], data['Aliquot_volume_μl'], data['Sample_volume_ml'])
     
-    return data
+    return data, draw_graph(plot_data, plot_line)
 
-def draw_graph():
+def draw_graph(data_point, data_line):
         
            fig, ax = plt.subplots(figsize=(12,8))
            plt.ylabel('Absorbance at 595nm')
            plt.xlabel('Amount of proteins (μg)')
            plt.title('Graph of the standard curve')
-           data_processing.plot_data
+           data_point
+           data_line
            data_processing.plot_line
            st.pyplot(fig)
 
@@ -101,8 +102,7 @@ if uploaded_file is not None:
     st.write(dataframe)
     if st.button("Process data"):
         st.write(data_processing(dataframe))
-    if st.button("Show graph"):
-        st.write(draw_graph())
+    
     
         
 
