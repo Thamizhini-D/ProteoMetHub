@@ -77,7 +77,6 @@ def draw_graph(data_point):
            plt.title('Graph of the standard curve')
            data_point
            #data_line
-           data_processing.plot_line
            st.pyplot(fig)
 
 
