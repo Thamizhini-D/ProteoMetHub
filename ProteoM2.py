@@ -28,8 +28,6 @@ def calcsampleconc (Protein_μg_aliquot, ALiquot_volume_μl, Sample_volume_ml):
 
         
 def data_processing(data):
-    #    global plot_data, plot_line
-
 
     #standardizing verbal input by "SMALLER CASING" all of them
     data['Condition_name'] = data['Condition_name'].str.lower()
@@ -43,9 +41,9 @@ def data_processing(data):
     m, c = np.polyfit(conc, abso, 1)
 
     #plot the data points,   
-    global plot_data = plt.plot(conc, abso, 'o')
+    this.plot_data = plt.plot(conc, abso, 'o')
     # plot the line of best fit
-    global plot_line = plt.plot(conc, m*conc+c, 'g-')
+    this.plot_line = plt.plot(conc, m*conc+c, 'g-')
 
     #group by Condition num/name, avg the abso values, name the new columns, round the avg values
     data_mean = data.groupby(['Condition_number'])['Absorbance_nm'].mean().round(3).rename('Average_absorbance_nm').reset_index()
@@ -77,10 +75,8 @@ def draw_graph():
            plt.ylabel('Absorbance at 595nm')
            plt.xlabel('Amount of proteins (μg)')
            plt.title('Graph of the standard curve')
-           #plot the data points
-           plot_data
-           #plot the line of best fit
-           plot_line           
+           data_processing.plot_data
+           data_processing.plot_line
            st.pyplot(fig)
 
 
