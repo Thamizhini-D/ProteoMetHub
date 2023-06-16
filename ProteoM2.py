@@ -69,7 +69,7 @@ def data_processing(data):
     
     return data, draw_graph(plot_data)
 
-def draw_graph(data_poin):
+def draw_graph(data_point):
         
            fig, ax = plt.subplots(figsize=(12,8))
            plt.ylabel('Absorbance at 595nm')
