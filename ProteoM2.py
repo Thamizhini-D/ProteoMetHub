@@ -31,7 +31,8 @@ def data_processing(data):
     st.divider()
 
     st.header("Processed Data")
-    
+    st.caption("Calculates average absorbance value per concentration, amount of proteins in aliquot and sampls and the volume needed for 100μg of proteins")
+
     #standardizing verbal input by "SMALLER CASING" all of them
     data['Condition_name'] = data['Condition_name'].str.lower()
     data['Standard_Unknown'] = data['Standard_Unknown'].str.lower()
@@ -103,6 +104,9 @@ if uploaded_file is not None:
             dataframe = pd.read_excel(uploaded_file)
 
     st.header("Your Experimental Data")
+    st.caption("Check if your data is displayed correctly, i.e. has been entered according to the set format")
+
+
     st.write(dataframe)
     if st.button("Process data"):
         data_processing(dataframe)
