@@ -86,6 +86,10 @@ def draw_graph(conc_x, abso_y, grad_m, inter_c):
 
            return st.pyplot(fig)
 
+def convert_df(df):
+    # IMPORTANT: Cache the conversion to prevent computation on every rerun
+    return df.to_csv().encode('utf-8')
+
 
 st.title("ProteoMetrics")
 st.subheader("Created for the Bradford Assay")
@@ -111,9 +115,12 @@ if uploaded_file is not None:
     if st.button("Process data"):
         data_processing(dataframe)
     
-    
-        
 
+st.download_button(
+    label="Download CSV",
+    data=data,
+    mime='text/csv',
+)
         
 # In[ ]:
 
