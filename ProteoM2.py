@@ -82,7 +82,7 @@ def draw_graph(conc_x, abso_y, grad_m, inter_c):
            plt.title('Graph of the standard curve')
 
            fig_html = mpld3.fig_to_html(fig)
-           return components.html(fig_html, height=300)
+           return components.html(fig_html, height=300, width=300)
 
 
 st.title("ProteoMetrics")
