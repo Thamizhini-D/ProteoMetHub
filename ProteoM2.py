@@ -114,13 +114,11 @@ if uploaded_file is not None:
     st.write(dataframe)
     if st.button("Process data"):
         data_processing(dataframe)
-    
-
-st.download_button(
-    label="Download CSV",
-    data=data,
-    mime='text/csv',
-)
+        st.download_button(
+            label="Download CSV",
+            data=convert_df(data_processing(dataframe)),
+            mime='text/csv',
+        )    
         
 # In[ ]:
 
