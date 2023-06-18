@@ -67,7 +67,7 @@ def data_process_table(data, m, c):
     st.divider()
 
     st.header("Processed Data")
-    st.caption("Calculates average absorbance value per concentration, amount of proteins in aliquot and sampls and the volume needed for 100μg of proteins")
+    st.markdown("Calculates average absorbance value per concentration, amount of proteins in aliquot and sampls and the volume needed for 100μg of proteins")
 
     #group by Condition num/name, avg the abso values, name the new columns, round the avg values
     data_mean = data.groupby(['Condition_number'])['Absorbance_nm'].mean().round(3).rename('Average_absorbance_nm').reset_index()
@@ -99,7 +99,7 @@ def convert_df(df):
 
 
 st.title("ProteoMetrics")
-st.subheader("Created for the Bradford Assay")
+st.caption("...for for the Bradford Assay")
 
 uploaded_file = st.file_uploader("Upload your file", type=("csv", "xls", "xlsx"))
 
@@ -115,7 +115,7 @@ if uploaded_file is not None:
             dataframe = pd.read_excel(uploaded_file)
 
     st.header("Your Experimental Data")
-    st.caption("Check if your data is displayed correctly, i.e. has been entered according to the set format")
+    st.markdown("Check if your data is displayed correctly, i.e. has been entered according to the set format")
 
     st.write(dataframe)
     if st.button("Process data"):
