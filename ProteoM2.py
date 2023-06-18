@@ -133,11 +133,9 @@ if uploaded_file is not None:
             mime='text/csv',
         )  
 
-        st.download_button(
-            label="Download image",
-            data=file,
-            mime="image/png"
-          )
+        if st.button("Download graph"):
+            plt.savefig('saved_figure.png')
+
 
 
         
