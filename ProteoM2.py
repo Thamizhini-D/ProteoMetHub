@@ -125,12 +125,19 @@ if uploaded_file is not None:
             draw_graph(conc_abso[0], conc_abso[1], m_c_output[0], m_c_output[1])    
         
         resultant_file = convert_df(process_result)
+        file = plt.savefig('foo.png')    
         
                 st.download_button(
                     label="Download CSV",
                     data=resultant_file,
                     mime='text/csv',
                 )  
+
+                st.download_button(
+                    label="Download image",
+                    data=file,
+                    mime="image/png"
+                  )
 
 
         
