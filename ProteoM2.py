@@ -142,11 +142,11 @@ if uploaded_file is not None:
            st.pyplot(fig)
 
 
-                st.download_button(
-                label="Download CSV",
-                data=convert_df(process_result),
-                mime='text/csv',
-                )  
+        st.download_button(
+        label="Download CSV",
+        data=convert_df(process_result),
+        mime='text/csv',
+        )  
 
 
         
