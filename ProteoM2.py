@@ -135,7 +135,7 @@ if uploaded_file is not None:
            plt.plot(conc_abso[0], m_c_output[0]*conc_abso[0]+m_c_output[1], 'g-')
            fig, ax = plt.subplots(figsize=(12,8))
 
-           st.pyplot(fig)
+           st.write(st.pyplot(fig))
 
 
         st.download_button(
