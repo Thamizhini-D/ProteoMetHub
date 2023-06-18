@@ -99,7 +99,7 @@ def convert_df(df):
 
 
 st.title("ProteoMetrics🧪")
-st.markdown("_Made for the Bradford Assay_")
+st.markdown("_Made for the Bradford Assay_✨")
 
 uploaded_file = st.file_uploader("Upload your file", type=("csv", "xls", "xlsx"))
 
@@ -115,7 +115,7 @@ if uploaded_file is not None:
             dataframe = pd.read_excel(uploaded_file)
 
     st.header("Your Experimental Data")
-    st.markdown("Check if your data is displayed correctly, i.e. has been entered according to the set format")
+    st.markdown("Check if your data is displayed correctly, i.e. has been entered according to the **set format**")
 
     st.write(dataframe)
     if st.button("Process data"):
