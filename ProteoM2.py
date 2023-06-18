@@ -121,6 +121,13 @@ if uploaded_file is not None:
         process_result = data_process_table(dataframe, m_c_output[0], m_c_output[1])
         st.write(process_result)
 
+
+        st.download_button(
+        label="Download CSV",
+        data=convert_df(process_result),
+        mime='text/csv',
+        )  
+            
         if st.button("Show graph"):
             st.pyplot(draw_graph(conc_abso[0], conc_abso[1], m_c_output[0], m_c_output[1]))
             
@@ -128,11 +135,7 @@ if uploaded_file is not None:
 #resultant_file = convert_df(process_result)
 #file = plt.savefig('foo.png')    
 
-        st.download_button(
-            label="Download CSV",
-            data=convert_df(process_result),
-            mime='text/csv',
-        )  
+        
 
 #if st.button("Download graph"):
 #plt.savefig('saved_figure.png')
