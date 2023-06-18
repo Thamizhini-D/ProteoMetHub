@@ -7,6 +7,7 @@ import numpy as np
 import streamlit as st
 import matplotlib.pyplot as plt
 import io 
+import plotly.io
 
         
 # calculates the concentration using the absorbance_value, m & c values  
@@ -93,9 +94,9 @@ def convert_df(df):
     return df.to_csv().encode('utf-8')
 
 
-def convert_fig():
+def convert_fig(fig):
     #convert Plotly fig to  an array
-    fig_bytes = plt.io.to_image(format="png")
+    fig_bytes = plotly.io.to_image(fig, format="png")
     return fig_bytes
 
 
@@ -127,7 +128,7 @@ if uploaded_file is not None:
         graph_result = draw_graph(conc_abso[0], conc_abso[1], m_c_output[0], m_c_output[1])
         st.pyplot(graph_result)    
     
-        with open(convert_fig(), "rb") as file:
+        with open(convert_fig(graph_result), "rb") as file:
             btn = st.download_button(
                     label="Download image",
                     data=file,
