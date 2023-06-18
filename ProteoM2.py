@@ -7,7 +7,6 @@ import numpy as np
 import streamlit as st
 import matplotlib.pyplot as plt
 import io 
-import plotly.io
 
         
 # calculates the concentration using the absorbance_value, m & c values  
