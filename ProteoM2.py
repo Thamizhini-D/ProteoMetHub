@@ -98,7 +98,7 @@ def convert_df(df):
     return df.to_csv().encode('utf-8')
 
 
-st.title("ProteoMetrics")
+st.title("ProteoMetrics🧪")
 st.caption("...for for the Bradford Assay")
 
 uploaded_file = st.file_uploader("Upload your file", type=("csv", "xls", "xlsx"))
