@@ -46,7 +46,7 @@ def draw_graph(conc_x, abso_y, grad_m, inter_c):
            st.divider()
            st.header("Linear Regression Model")
 
-           fig, ax = plt.subplots(figsize=(12,8))
+           fig, ax = plt.subplots(figsize=(6,4))
 
            plt.ylabel('Absorbance at 595nm')
            plt.xlabel('Amount of proteins (μg)')
@@ -118,12 +118,12 @@ if uploaded_file is not None:
         conc_abso = standard_curve_data(dataframe)
         m_c_output = intergrad_calc(conc_abso[0], conc_abso[1])
         process_result = data_process_table(dataframe, m_c_output[0], m_c_output[1])  
-        st.write(" do body Works")
+        #st.write(" do body Works")
 
         st.write(process_result)
         if st.button("Show graph"):
-           #draw_graph(conc_abso[0], conc_abso[1], m_c_output[0], m_c_output[1])
-           st.write(" do body Works")
+           draw_graph(conc_abso[0], conc_abso[1], m_c_output[0], m_c_output[1])
+           #st.write(" do body Works")
 
            
 
