@@ -27,22 +27,45 @@ def calcsampleconc (Protein_μg_aliquot, ALiquot_volume_μl, Sample_volume_ml):
     return Protein_μg_sample
 
         
-def data_processing(data):
-    st.divider()
-
-    st.header("Processed Data")
-    st.caption("Calculates average absorbance value per concentration, amount of proteins in aliquot and sampls and the volume needed for 100μg of proteins")
-
-    #standardizing verbal input by "SMALLER CASING" all of them
+def standard_curve_data(data):
+     #standardizing verbal input by "SMALLER CASING" all of them
     data['Condition_name'] = data['Condition_name'].str.lower()
     data['Standard_Unknown'] = data['Standard_Unknown'].str.lower()
 
     #reading data from the columns
     conc = data[data.Standard_Unknown =='s']['Protein_μg_sample']
     abso = data[data.Standard_Unknown =='s']['Absorbance_nm']
+    return conc, abso
 
-    #line of best fit using polyfit function
+def intergrad_calc(conc, abso):
+   #line of best fit using polyfit function
     m, c = np.polyfit(conc, abso, 1)
+    return m, c
+    
+def draw_graph(conc_x, abso_y, grad_m, inter_c):
+           st.divider()
+
+           st.header("Linear Regression Model")
+
+           fig, ax = plt.subplots(figsize=(12,8))
+
+           # plot the line of best fit
+           plt.plot(conc_x, abso_y, 'o')
+           # plot the line of best fit
+           plt.plot(conc_x, grad_m*conc_x+inter_c, 'g-')
+        
+           plt.ylabel('Absorbance at 595nm')
+           plt.xlabel('Amount of proteins (μg)')
+           plt.title('Graph of the standard curve')
+
+           return st.pyplot(fig)
+    
+def data_process_table(data, m, c):
+            
+    st.divider()
+
+    st.header("Processed Data")
+    st.caption("Calculates average absorbance value per concentration, amount of proteins in aliquot and sampls and the volume needed for 100μg of proteins")
 
     #group by Condition num/name, avg the abso values, name the new columns, round the avg values
     data_mean = data.groupby(['Condition_number'])['Absorbance_nm'].mean().round(3).rename('Average_absorbance_nm').reset_index()
@@ -66,30 +89,11 @@ def data_processing(data):
     #calculate the amount of protein in entire sample based on amounts in aliquot 
     data.loc[data.Standard_Unknown =='u','Protein_μg_sample'] = calcsampleconc(data['Protein_μg_aliquot'], data['Aliquot_volume_μl'], data['Sample_volume_ml'])
     
-    return st.write(data), draw_graph(conc, abso, m, c)
-
-def draw_graph(conc_x, abso_y, grad_m, inter_c):
-           st.divider()
-
-           st.header("Linear Regression Model")
-
-           fig, ax = plt.subplots(figsize=(12,8))
-
-           # plot the line of best fit
-           plt.plot(conc_x, abso_y, 'o')
-           # plot the line of best fit
-           plt.plot(conc_x, grad_m*conc_x+inter_c, 'g-')
-        
-           plt.ylabel('Absorbance at 595nm')
-           plt.xlabel('Amount of proteins (μg)')
-           plt.title('Graph of the standard curve')
-
-           return st.pyplot(fig)
+    return st.write(data)
 
 def convert_df(df):
     # IMPORTANT: Cache the conversion to prevent computation on every rerun
     return df.to_csv().encode('utf-8')
-
 
 st.title("ProteoMetrics")
 st.subheader("Created for the Bradford Assay")
@@ -110,15 +114,26 @@ if uploaded_file is not None:
     st.header("Your Experimental Data")
     st.caption("Check if your data is displayed correctly, i.e. has been entered according to the set format")
 
-
     st.write(dataframe)
     if st.button("Process data"):
-        data_processing(dataframe)
+        conc_abso = standard_curve_data(dataframe)
+        m_c_output = intergrad_calc(conc_abso)
+        process_result = data_process_table(dataframe, m_c_output)
+        st.write(process_result)
+        
+        resultant_file = convert_df(process_result)
+        
         st.download_button(
             label="Download CSV",
-            data=convert_df(data_processing(dataframe)),
+            data=resultant_file,
             mime='text/csv',
-        )    
+        )  
+        
+        st.button("Show graph"):
+            draw_graph(conc_abso, m_c_output)
+
+            
+   
         
 # In[ ]:
 
