@@ -128,11 +128,7 @@ if uploaded_file is not None:
            
 
 
-        st.download_button(
-        label="Download CSV",
-        data=convert_df(process_result),
-        mime='text/csv',
-        )  
+        
 
 
         
@@ -143,6 +139,12 @@ if uploaded_file is not None:
 
 #if st.button("Download graph"):
 #plt.savefig('saved_figure.png')
+
+                                                #st.download_button(
+   #     label="Download CSV",
+  #      data=convert_df(process_result),
+ #       mime='text/csv',
+#        )  
 
 
 
