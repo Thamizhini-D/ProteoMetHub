@@ -118,12 +118,7 @@ if uploaded_file is not None:
     if st.button("Process data"):
         conc_abso = standard_curve_data(dataframe)
         m_c_output = intergrad_calc(conc_abso[0], conc_abso[1])
-        process_result = data_process_table(dataframe, m_c_output[0], m_c_output[1])
-
-        # plot the line of best fit
-        plt.plot(conc_abso[0], conc_abso[1], 'o')
-        # plot the line of best fit
-        plt.plot(conc_abso[0], m_c_output[0]*conc_abso[0]+m_c_output[1], 'g-')    
+        process_result = data_process_table(dataframe, m_c_output[0], m_c_output[1])  
             
         st.write(process_result)
 
@@ -132,13 +127,7 @@ if uploaded_file is not None:
            st.divider()
            st.header("Linear Regression Model")
 
-           plt.ylabel('Absorbance at 595nm')
-           plt.xlabel('Amount of proteins (μg)')
-           plt.title('Graph of the standard curve')
            
-           fig, ax = plt.subplots(figsize=(12,8))
-
-           st.pyplot(fig)
 
 
         st.download_button(
