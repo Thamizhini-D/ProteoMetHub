@@ -56,7 +56,7 @@ def draw_graph(conc_x, abso_y, grad_m, inter_c):
            plt.plot(conc_x, abso_y, 'o')
            # plot the line of best fit
            plt.plot(conc_x, grad_m*conc_x+inter_c, 'g-')
-           plt.savefig('reg_chart')
+           plt.savefig('reg_chart.png')
 
            return fig
     
