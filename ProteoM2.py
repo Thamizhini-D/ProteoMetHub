@@ -137,8 +137,7 @@ if uploaded_file is not None:
            plt.plot(conc_abso[0], conc_abso[1], 'o')
            # plot the line of best fit
            plt.plot(conc_abso[0], m_c_output[0]*conc_abso[0]+m_c_output[1], 'g-')  
-           plt.show()
-           st.pyplot(fig)
+           plt.show(fig)
 
            
 
