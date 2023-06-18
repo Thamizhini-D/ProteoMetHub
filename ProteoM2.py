@@ -58,7 +58,7 @@ def draw_graph(conc_x, abso_y, grad_m, inter_c):
            plt.xlabel('Amount of proteins (μg)')
            plt.title('Graph of the standard curve')
 
-           return st.pyplot(fig)
+           st.pyplot(fig)
     
 def data_process_table(data, m, c):
             
@@ -129,7 +129,7 @@ if uploaded_file is not None:
         )  
             
         if st.button("Show graph"):
-            st.write(draw_graph(conc_abso[0], conc_abso[1], m_c_output[0], m_c_output[1]))
+            draw_graph(conc_abso[0], conc_abso[1], m_c_output[0], m_c_output[1])
             
         
 #resultant_file = convert_df(process_result)
