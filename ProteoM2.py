@@ -58,7 +58,7 @@ def draw_graph(conc_x, abso_y, grad_m, inter_c):
            plt.plot(conc_x, grad_m*conc_x+inter_c, 'g-')
                 
            if st.button("Download graph"):
-                plt.savefig('saved_figure.png')
+                fig.savefig('reg_chart')
 
            return st.pyplot(fig)
     
