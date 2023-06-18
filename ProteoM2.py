@@ -127,11 +127,11 @@ if uploaded_file is not None:
         resultant_file = convert_df(process_result)
         file = plt.savefig('foo.png')    
         
-                st.download_button(
-                    label="Download CSV",
-                    data=resultant_file,
-                    mime='text/csv',
-                )  
+        st.download_button(
+            label="Download CSV",
+            data=resultant_file,
+            mime='text/csv',
+        )  
 
         st.download_button(
             label="Download image",
