@@ -44,7 +44,6 @@ def intergrad_calc(conc, abso):
     
 def draw_graph(conc_x, abso_y, grad_m, inter_c):
            st.divider()
-
            st.header("Linear Regression Model")
 
            fig, ax = plt.subplots(figsize=(12,8))
@@ -123,21 +122,8 @@ if uploaded_file is not None:
         st.write(process_result)
 
         if st.button("Show graph"):
-            #draw_graph(conc_abso[0], conc_abso[1], m_c_output[0], m_c_output[1])
-           st.divider()
-           st.header("Linear Regression Model")
-           
-           fig, ax = plt.subplots(figsize=(12,8))
-
-           plt.ylabel('Absorbance at 595nm')
-           plt.xlabel('Amount of proteins (μg)')
-           plt.title('Graph of the standard curve')
-
-           # plot the line of best fit
-           plt.plot(conc_abso[0], conc_abso[1], 'o')
-           # plot the line of best fit
-           plt.plot(conc_abso[0], m_c_output[0]*conc_abso[0]+m_c_output[1], 'g-')  
-           plt.show(fig)
+           #draw_graph(conc_abso[0], conc_abso[1], m_c_output[0], m_c_output[1])
+          st.write(" do body Works")
 
            
 
