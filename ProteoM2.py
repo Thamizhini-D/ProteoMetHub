@@ -94,12 +94,6 @@ def convert_df(df):
     return df.to_csv().encode('utf-8')
 
 
-def convert_fig(fig):
-    #convert Plotly fig to  an array
-    fig_bytes = plotly.io.to_image(fig, format="png")
-    return fig_bytes
-
-
 st.title("ProteoMetrics")
 st.subheader("Created for the Bradford Assay")
 
@@ -125,17 +119,20 @@ if uploaded_file is not None:
         m_c_output = intergrad_calc(conc_abso[0], conc_abso[1])
         process_result = data_process_table(dataframe, m_c_output[0], m_c_output[1])  
         st.write(process_result)
+        
         graph_result = draw_graph(conc_abso[0], conc_abso[1], m_c_output[0], m_c_output[1])
         st.pyplot(graph_result)    
-    
-        with open(convert_fig(graph_result), "rb") as file:
-            btn = st.download_button(
-                    label="Download image",
-                    data=file,
-                    file_name="reg_chart.png",
-                    mime="image/png"
-                  )    
+        img = io.BytesIO()
+        plt.savefig(img, format='png')
 
+        btn = st.download_button(
+           label="Download image",
+           data=img,
+           file_name='processed_data',
+           mime="image/png"
+        )
+            
+        
         st.download_button(
                 label="Download CSV",
                 data=convert_df(process_result),
