@@ -8,6 +8,11 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import io 
 
+st.set_page_config(page_title=ProteoMetrics, page_icon="random", layout="centered", initial_sidebar_state="auto", menu_items={
+        'Get Help': 'https://www.extremelycoolapp.com/help',
+        'Report a bug': "https://www.extremelycoolapp.com/bug",
+        'About': "# This is a header. This is an *extremely* cool app!"
+    })
         
 # calculates the concentration using the absorbance_value, m & c values  
 def calconc (gradient, intercept, absorbance):
