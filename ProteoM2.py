@@ -95,9 +95,8 @@ def convert_df(df):
 
 def convert_fig(fig):
     #convert Plotly fig to  an array
-    fig_bytes = fig.to_image(format="png")
-    buf = io.BytesIO(fig_bytes)
-    return buf
+    fig_bytes = fig.io.to_image(format="png")
+    return fig_bytes
 
 
 st.title("ProteoMetrics")
