@@ -128,7 +128,6 @@ if uploaded_file is not None:
         btn = st.download_button(
            label="Download image",
            data=img,
-           file_name='processed_data',
            mime="image/png"
         )
             
