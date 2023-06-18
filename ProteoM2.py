@@ -89,7 +89,7 @@ def data_process_table(data, m, c):
     #calculate the amount of protein in entire sample based on amounts in aliquot 
     data.loc[data.Standard_Unknown =='u','Protein_μg_sample'] = calcsampleconc(data['Protein_μg_aliquot'], data['Aliquot_volume_μl'], data['Sample_volume_ml'])
     
-    return st.write(data)
+    return data
 
 def convert_df(df):
     # IMPORTANT: Cache the conversion to prevent computation on every rerun
@@ -117,8 +117,8 @@ if uploaded_file is not None:
     st.write(dataframe)
     if st.button("Process data"):
         conc_abso = standard_curve_data(dataframe)
-        m_c_output = intergrad_calc(conc_abso)
-        process_result = data_process_table(dataframe, m_c_output)
+        m_c_output = intergrad_calc(conc_abso[0], conc_abso[1])
+        process_result = data_process_table(dataframe, m_c_output[0], m_c_output[1])
         st.write(process_result)
         
         resultant_file = convert_df(process_result)
