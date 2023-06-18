@@ -123,11 +123,11 @@ if uploaded_file is not None:
         graph_result = draw_graph(conc_abso[0], conc_abso[1], m_c_output[0], m_c_output[1])
         st.pyplot(graph_result)    
         img = io.BytesIO()
-        graf = plt.savefig(img, format='png')
+        plt.savefig(img, format='png')
 
         btn = st.download_button(
            label="Download image",
-           data=graf,
+           data=img,
            file_name='processed_data',
            mime="image/png"
         )
