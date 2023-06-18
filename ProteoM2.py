@@ -128,18 +128,13 @@ if uploaded_file is not None:
                 mime='text/csv',
                 )  
 
+        if st.button("Download graph"):
+                plt.savefig('saved_figure.png')
+
 
         
 
 
-        
-#resultant_file = convert_df(process_result)
-#file = plt.savefig('foo.png')    
-
-        
-
-#if st.button("Download graph"):
-#plt.savefig('saved_figure.png')
 
 
 
