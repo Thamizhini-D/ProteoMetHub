@@ -129,7 +129,7 @@ if uploaded_file is not None:
             mime='text/csv',
         )  
         
-        st.button("Show graph"):
+        if st.button("Show graph"):
             draw_graph(conc_abso, m_c_output)
 
             
