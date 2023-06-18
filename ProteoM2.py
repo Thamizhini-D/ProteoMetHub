@@ -99,7 +99,7 @@ def convert_df(df):
 
 
 st.title("ProteoMetrics🧪")
-st.markdown("_Made for the Bradford Assay_✨")
+st.markdown("_Made for the Bradford Assay_ ✨")
 
 uploaded_file = st.file_uploader("Upload your file", type=("csv", "xls", "xlsx"))
 
